@@ -13,6 +13,7 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'Shougo/deoplete.nvim'
 " For Denite features
 Plug 'Shougo/denite.nvim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 set number
@@ -22,6 +23,14 @@ set inccommand=split
 set clipboard=unnamed
 set expandtab
 set shiftwidth=2
+" set support to 256-colors
+set termguicolors
+" enforce display italic
+let g:gruvbox_italic=1
+" set color scheme
+colorscheme gruvbox
+" set backgroud to dark mode
+set bg=dark
 
 let mapleader="\<space>"
 
