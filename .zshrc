@@ -120,6 +120,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Custom Paths
+export PATH=$PATH:$HOME/.local/kitty.app/bin
+
 # Custom aliases
 alias dw="cd ~/Downloads"
 alias dc="cd ~/Documents"
