@@ -3,4 +3,4 @@
 	email = leal.banks@gmail.com
 
 [core]
-	editor = 'vim'
+	editor = 'nvim'
