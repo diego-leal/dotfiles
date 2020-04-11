@@ -1,4 +1,4 @@
-# Custom aliases
+# Location
 alias dw="cd ~/Downloads"
 alias dc="cd ~/Documents"
 alias wp="cd ~/Workspace"
@@ -9,7 +9,7 @@ alias ....="cd ../.."
 alias ......="cd ../../.."
 alias del="rm -r"
 
-# Git aliases
+# Git
 alias glg="git log --oneline --graph"
 alias gco="git checkout"
 alias gci="git commit"
@@ -31,3 +31,7 @@ alias gmr="git merge"
 alias gsh="git stash"
 alias gcp="git cherry-pick"
 alias gcl="git clone"
+
+# Others
+alias vi="nvim"
+alias vim="nvim"
