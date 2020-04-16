@@ -1,19 +1,12 @@
 call plug#begin('~/.config/nvim/plugged')
-" Fuzzi search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-
-" Add a syntax file. YATS is the best
 Plug 'HerringtonDarkholme/yats.vim'
-
-" For async completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" For autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Theme
 Plug 'morhetz/gruvbox'
+Plug 'mbbill/undotree'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 syntax on
@@ -24,25 +17,18 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set nu
-set nowrap
 set smartcase
 set noswapfile
 set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
-set incsearch
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=1000
+set updatetime=1000 "Default 4000ms
+set colorcolumn=120
+set nowrap
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-set colorcolumn=120
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 set termguicolors
@@ -65,14 +51,6 @@ endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -98,15 +76,8 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 map <leader>f  <Plug>(coc-format-selected)
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
 
@@ -120,6 +91,8 @@ let mapleader="\<space>"
 nnoremap <leader>; A;<esc>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <c-p> :Files<cr>
+nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <c-b> :NERDTreeToggle<cr>
 
 autocmd BufWritePre * :call TrimWhitespace()
 
