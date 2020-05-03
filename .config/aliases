@@ -35,3 +35,5 @@ alias gcl="git clone"
 # Others
 alias vi="nvim"
 alias vim="nvim"
+alias evimrc="nvim $MYVIMRC"
+alias ezshrc="nvim $HOME/.zshrc"
