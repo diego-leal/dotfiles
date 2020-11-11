@@ -1,1 +1,4 @@
-.scripts
+.config/nvim/autoload
+.config/nvim/plugged
+.config/nvim/undodir
+.config/nvim/.netrwhist
