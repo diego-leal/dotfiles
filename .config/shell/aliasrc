@@ -45,6 +45,10 @@ alias glg="git log --oneline --graph" \
     gcp="git cherry-pick" \
     gcl="git clone"
 
+# Pacman
+alias pacman="pacman --color=auto" \
+    p="sudo pacman"
+
 # Others
 alias vi="nvim" \
     vim="nvim" \

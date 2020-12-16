@@ -5,6 +5,7 @@ export PATH="$(find $HOME/.local/bin/ -maxdepth 1 -type d | paste -sd :):$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Fzf config
 export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude .git'
@@ -18,4 +19,3 @@ export MYVIMRC=$HOME/.config/nvim/init.vim
 export TERMINAL=alacritty
 export GTK_IM_MODULE=cedilla
 export QT_IM_MODULE=cedilla
-export ZDOTDIR="$XDG_CONFIG_HOME/.config/zsh"

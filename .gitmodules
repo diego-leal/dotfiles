@@ -1,8 +1,0 @@
-[submodule "asdf"]
-    path = .local/share/src/asdf
-    url = https://github.com/asdf-vm/asdf
-[submodule "fzf"]
-    path = .local/share/src/fzf
-    url = https://github.com/junegunn/fzf.git
-[submodule]
-	ignore = dirty

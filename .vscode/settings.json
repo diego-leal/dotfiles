@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "**/bin/**": "shellscript",
+        "**/shell/**": "shellscript",
+        "**/zsh/**": "shellscript"
+    }
+}

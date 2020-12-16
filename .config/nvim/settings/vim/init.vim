@@ -6,7 +6,6 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 end
 
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf' }
     Plug 'junegunn/fzf.vim'
     Plug 'HerringtonDarkholme/yats.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
