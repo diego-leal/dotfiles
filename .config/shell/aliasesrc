@@ -1,0 +1,52 @@
+# Colors
+alias ls="ls --color=auto --group-directories-first" \
+    dir="dir --color=auto" \
+    vdir="vdir --color=auto" \
+    grep="grep --color=auto" \
+    fgrep="fgrep --color=auto" \
+    egrep="egrep --color=auto"
+
+# Jumpping on directories
+alias dw="cd ~/Downloads" \
+    dc="cd ~/Documents" \
+    wp="cd ~/Workspace" \
+    ms="cd ~/Music" \
+    vd="cd ~/Videos" \
+    ..="cd .." \
+    ....="cd ../.." \
+    ......="cd ../../.." \
+    del="rm -rf"
+
+# Ls shortcut
+alias ll="ls -alF" \
+    la="ls -A" \
+    l="ls -CF"
+
+# Git
+alias glg="git log --oneline --graph" \
+    gco="git checkout" \
+    gci="git commit" \
+    gca="git commit --amend" \
+    grm="git reset --mixed" \
+    grs="git reset --soft" \
+    grh="git commit --hard" \
+    gbc="git branch" \
+    gpl="git pull origin" \
+    gps="git push origin" \
+    gpu="git push --set-upstream origin" \
+    gad="git add" \
+    gaa="git add --all" \
+    gst="git status -s" \
+    grb="git rebase" \
+    gri="git rebase -i" \
+    gdf="git diff" \
+    gmr="git merge" \
+    gsh="git stash" \
+    gcp="git cherry-pick" \
+    gcl="git clone"
+
+# Others
+alias vi="nvim" \
+    vim="nvim" \
+    evimrc="nvim $MYVIMRC" \
+    ezshrc="nvim $XDG_CONFIG_HOME/zsh/.zshrc"

@@ -1,0 +1,16 @@
+# PATH
+export PATH="$(find $HOME/.local/bin/ -maxdepth 1 -type d | paste -sd :):$PATH"
+
+# XDG config
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Global env
+export EDITOR=nvim
+export BROWSER=brave-browser
+export MYVIMRC=$HOME/.config/nvim/init.vim
+export TERMINAL=alacritty
+export GTK_IM_MODULE=cedilla
+export QT_IM_MODULE=cedilla
+export ZDOTDIR="$XDG_CONFIG_HOME/.config/zsh"

@@ -1,6 +1,6 @@
 [user]
-	name = Diego Leal
-	email = leal.banks@gmail.com
+    name = Diego Leal
+    email = leal.banks@gmail.com
 
 [core]
-	editor = 'nvim'
+    editor = 'nvim'

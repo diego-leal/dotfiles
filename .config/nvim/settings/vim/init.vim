@@ -1,12 +1,12 @@
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
     echo "Downloading junegunn/vim-plug to manage plugins..."
-    silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+    silent !mkdir -p $XDG_CONFIG_HOME/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > $XDG_CONFIG_HOME/nvim/autoload/plug.vim
     autocmd VimEnter * PlugInstall
 end
 
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf' }
     Plug 'junegunn/fzf.vim'
     Plug 'HerringtonDarkholme/yats.vim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
