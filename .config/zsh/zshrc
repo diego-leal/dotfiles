@@ -10,15 +10,11 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
-# Load aliases and shortcuts if existent.
-source ~/.config/shell/aliasesrc
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
-
+# append asdf completions to fpath
+fpath=(${asdf_dir}/completions $fpath)
 
 # Basic auto/tab complete:
-autoload -U compinit
+autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
@@ -44,6 +40,15 @@ bindkey -s '^a' 'bc -lq\n'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 bindkey '^[[P' delete-char
 bindkey '^e' edit-command-line
+
+# Load aliases and shortcuts if existent.
+source ~/.config/shell/aliasrc
+
+# Load fzf keybinds
+source ~/.local/share/src/fzf/shell/key-bindings.zsh
+
+# Load asdf config
+source ~/.local/share/src/asdf/asdf.sh
 
 # Load vi mode config
 source ~/.config/zsh/vimode.zsh
