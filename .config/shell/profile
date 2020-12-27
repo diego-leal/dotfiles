@@ -1,10 +1,15 @@
 # PATH
 export PATH="$(find $HOME/.local/bin/ -maxdepth 1 -type d | paste -sd :):$PATH"
 
-# XDG config
+# Xdg config
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# Fzf config
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Global env
 export EDITOR=nvim
