@@ -18,7 +18,7 @@ alias dw="cd ~/Downloads" \
     del="rm -rf"
 
 # Ls shortcut
-alias ll="ls -alF" \
+alias ll="ls -AlF" \
     la="ls -A" \
     l="ls -CF"
 
@@ -53,4 +53,6 @@ alias pacman="pacman --color=auto" \
 alias vi="nvim" \
     vim="nvim" \
     evimrc="nvim $MYVIMRC" \
-    ezshrc="nvim $XDG_CONFIG_HOME/zsh/.zshrc"
+    ezshrc="nvim $XDG_CONFIG_HOME/zsh/.zshrc" \
+    fd="fdfind" \
+    lg="lazygit"

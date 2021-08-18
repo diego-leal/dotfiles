@@ -19,8 +19,17 @@ setopt autocd # Automatically cd into typed directory.
 setopt interactive_comments
 stty stop undef # Disable ctrl-s to freeze terminal.
 
+# Load asdf config;
+source $HOME/.asdf/asdf.sh
+
+# Load aliases and shortcuts
+source ~/.config/shell/aliasrc
+
+# Load fzf keybinds; Installed via pacman
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # append asdf completions to fpath
-fpath=(${asdf_dir}/completions $fpath)
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # Basic auto/tab complete:
 autoload -Uz compinit
@@ -29,38 +38,14 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)   # Include hidden files.
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp" >/dev/null
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 
 # Bind session
-bindkey -s '^o' 'lfcd\n'
 bindkey -s '^a' 'bc -lq\n'
 bindkey -s '^f' 'cd "$(fd --hidden --exclude .git --type d | fzf)"\n'
 bindkey '^[[P' delete-char
 bindkey '^e' edit-command-line
 
-# Load aliases and shortcuts if existent.
-source ~/.config/shell/aliasrc
-
-# Load fzf keybinds; Installed via pacman
-source /usr/share/fzf/key-bindings.zsh
-
-# Load asdf config; Installed via yay
-source /opt/asdf-vm/asdf.sh
-
 # Load vi mode config
 source ~/.config/zsh/vimode
-
-# Load syntax highlighting; should be last.
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
