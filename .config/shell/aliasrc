@@ -50,9 +50,6 @@ alias pacman="pacman --color=auto" \
     p="sudo pacman"
 
 # Others
-alias vi="nvim" \
-    vim="nvim" \
-    evimrc="nvim $MYVIMRC" \
+alias evimrc="nvim $MYVIMRC" \
     ezshrc="nvim $XDG_CONFIG_HOME/zsh/.zshrc" \
-    fd="fdfind" \
     lg="lazygit"
