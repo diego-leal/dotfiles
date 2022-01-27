@@ -3,3 +3,4 @@
 .config/nvim/undodir
 .config/nvim/.netrwhist
 .zcompdump
+packer_compiled.lua
