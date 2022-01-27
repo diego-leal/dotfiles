@@ -1,4 +1,3 @@
-
 local options = {
   tabstop = 2,
   softtabstop = 2,
@@ -14,56 +13,102 @@ local options = {
   termguicolors = true,
   splitbelow = true,
   splitright = true,
-  clipboard = "unnamedplus",
+  clipboard = 'unnamedplus',
   -- cursorline = true,
   cmdheight = 2,
+  background = 'dark',
 }
 
 for opt, value in pairs(options) do
   vim.opt[opt] = value
 end
 
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.g.gruvbox_invert_selection = '0'
+
+vim.cmd 'colorscheme gruvbox'
 
 -- Functional wrapper for mapping custom keybindings
 function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
+    local options = { noremap = true }
     if opts then
-        options = vim.tbl_extend("force", options, opts)
+        options = vim.tbl_extend('force', options, opts)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Force remap leader key to space
-map("", "<space>", "<nop>", { noremap = false })
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- ===========
 -- Insert Mode
 -- ===========
-map("i", "jj", "<esc>")
-map("i", ";;", "<esc>A;<esc>")
-map("i", ",,", "<esc>A,<esc>")
-
+map('i', 'jj', '<esc>')
+map('i', ';;', '<esc>A;<esc>')
+map('i', ',,', '<esc>A,<esc>')
 
 -- ===========
 -- Visual Mode
 -- ===========
-map("v", ">", ">gv")
-map("v", "<", "<gv")
-
+map('v', '>', '>gv')
+map('v', '<', '<gv')
 
 -- ===========
 -- Normal Mode
 -- ===========
--- startregion
-map("n", "<leader>sc", ":luafile ~/.config/nvim/init.lua<cr>", { silent = false })
-map("n", "<c-n>", ":nohl<cr>")
-map("n", "<leader>e", ":Lex<cr>")
---endregion
+map('n', '<leader>sc', ':luafile ~/.config/nvim/init.lua<cr>')
+map('n', '<c-n>', ':nohl<cr>')
+map('n', '<leader>e', ':Lex 20<cr>')
+map('n', '<c-p>', ':Telescope find_files<cr>')
 
--- Better Navigation
-map("n", "<c-j>", "<c-w>j")
-map("n", "<c-k>", "<c-w>k")
-map("n", "<c-h>", "<c-w>h")
-map("n", "<c-l>", "<c-w>l")
+local packer = require('packer')
+
+packer.startup(function()
+  use 'wbthomason/packer.nvim'
+  use 'gruvbox-community/gruvbox'
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+end)
+
+
+local lualine = require('lualine')
+
+lualine.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'gruvbox_dark',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
+
+return packer
