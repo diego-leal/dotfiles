@@ -1,3 +1,54 @@
+local packer = require('packer')
+
+packer.startup(function()
+  use 'wbthomason/packer.nvim'
+  -- use 'gruvbox-community/gruvbox'
+  use 'joshdick/onedark.vim'
+
+  -- use {
+    -- 'nvim-telescope/telescope.nvim',
+    -- requires = { {'nvim-lua/plenary.nvim'} }
+  -- }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+end)
+
+
+local lualine = require('lualine')
+
+lualine.setup {
+  options = {
+    icons_enabled = true,
+    -- theme = 'gruvbox_dark',
+    theme = 'onedark',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
 local options = {
   tabstop = 2,
   softtabstop = 2,
@@ -26,7 +77,8 @@ end
 vim.g.gruvbox_contrast_dark = 'hard'
 vim.g.gruvbox_invert_selection = '0'
 
-vim.cmd 'colorscheme gruvbox'
+-- vim.cmd 'colorscheme gruvbox'
+vim.cmd 'colorscheme onedark'
 
 -- Functional wrapper for mapping custom keybindings
 function map(mode, lhs, rhs, opts)
@@ -60,55 +112,5 @@ map('n', '<leader>sc', ':luafile ~/.config/nvim/init.lua<cr>')
 map('n', '<c-n>', ':nohl<cr>')
 map('n', '<leader>e', ':Lex 20<cr>')
 map('n', '<c-p>', ':Telescope find_files<cr>')
-
-local packer = require('packer')
-
-packer.startup(function()
-  use 'wbthomason/packer.nvim'
-  use 'gruvbox-community/gruvbox'
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
-end)
-
-
-local lualine = require('lualine')
-
-lualine.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'gruvbox_dark',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
-
 
 return packer
